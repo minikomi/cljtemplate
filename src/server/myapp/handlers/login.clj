@@ -14,7 +14,7 @@
    [:h2 "Login"]
    (when error
      [:h3.error error])
-   [:form {:method "POST"}
+   [:form {:method "POST" :action "/login"}
     (anti-forgery-field)
     [:label "Username:"
      [:input {:type "text"
@@ -47,7 +47,7 @@
                                :role (if (-> data :user :is_admin)
                                        "admin"
                                        "editor"))]
-        (-> (res/redirect (r/to :admin/news-home))
+        (-> (res/redirect (r/to :admin/home))
             (assoc :session new-session)))
       (layout/render
        (layout/base-template

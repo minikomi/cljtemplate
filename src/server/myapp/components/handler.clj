@@ -67,9 +67,9 @@
                                 %))
           response (handler new-req)]
       (if
-          (and (= 200 (:status response))
-               (= java.io.File (type (:body response)))
-               (re-find #"index.html$" (.getName (:body response))))
+       (and (= 200 (:status response))
+            (= java.io.File (type (:body response)))
+            (re-find #"index.html$" (.getName (:body response))))
         (assoc-in response [:headers "Content-Type"] "text/html")
         response))))
 

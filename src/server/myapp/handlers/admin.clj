@@ -25,10 +25,9 @@
 
 (defn handlers [kw]
   (when-let
-      [h (case kw
-           (:admin/home
-            ) admin-handler
-           false)]
+   [h (case kw
+        (:admin/home) admin-handler
+        false)]
     (-> h
         util/wrap-restrict
         util/wrap-nocache)))

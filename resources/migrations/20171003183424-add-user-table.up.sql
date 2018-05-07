@@ -6,5 +6,5 @@ CREATE TABLE users
   created_at  TIMESTAMP     NOT NULL      DEFAULT  CURRENT_TIMESTAMP,
   updated_at  TIMESTAMP     NOT NULL      DEFAULT  CURRENT_TIMESTAMP,
   username    VARCHAR(300)  NOT NULL,
-  password    VARCHAR(300)  NOT NULL,
+  password    VARCHAR(300)  NOT NULL
 );

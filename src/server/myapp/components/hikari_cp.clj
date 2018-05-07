@@ -9,7 +9,7 @@
 (defstate datasource
   :start
   {:datasource (hcp/make-datasource {:adapter (:db-adapter env)
-                                     :url "jdbc:postgresql://localhost:5432/shouter"})}
+                                     :url (:db-url env)})}
   :stop
   (hcp/close-datasource (:datasource datasource)))
 

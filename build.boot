@@ -98,7 +98,7 @@
                       :dir-static "static"
                       :dir-migrations "resources/migrations"
                       :db-adapter "postgresql"
-                      :db-url "jdbc:h2:./db/dev.db"})
+                      :db-url "jdbc:postgresql://localhost:5432/shouter"})
 
 (deftask dev-options []
   (task-options! cljs {:optimizations :none
@@ -159,8 +159,8 @@
    (prod-options)
    (if init identity (build-frontend))
    (run
-     :main-namespace "myapp.core"
-     :arguments (when init ["init"]))
+    :main-namespace "myapp.core"
+    :arguments (when init ["init"]))
    (wait)))
 
 (deftask build-dist []
@@ -240,4 +240,4 @@
    ;; frontend
    (build-spit-frontend)
    ;; images
-   ))
+))
