@@ -1,0 +1,13 @@
+.DS_Store
+build/
+.nrepl-port
+target/
+node_modules/
+.nrepl-history
+.#*
+/out.edn
+/out.json
+out/
+/log
+public_html/current
+/project.clj
