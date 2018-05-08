@@ -7,6 +7,7 @@
             [myapp.components.nrepl :as n]
             [myapp.components.handler :as h]
             [myapp.components.logger]
+            [myapp.repl]
             [clojure.java.io :as io]
             [environ.core :refer [env]]
             [me.raynes.fs :as fs]
