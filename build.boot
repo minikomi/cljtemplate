@@ -167,9 +167,7 @@
    (aot)
    (pom)
    (uber)
-   (jar)
-   (sift :include #{#".*\.jar"})
-   ))
+   (jar)))
 
 ;; lein based uber
 
@@ -228,15 +226,16 @@
 (deftask build-spit-frontend []
   (comp
    (build-frontend)
-   (sift :include #{#"^public/"})
-   (sift :invert true :include #{#"^out/"})
-   (sift :include #{#"\.out"} :invert true)
-   (target :dir #{"target"}
-           :no-clean true)))
+   ))
 
 (deftask build []
   (comp
    (prod-options)
+   (build-spit-frontend)
    (build-dist)
-   ;; frontend
-   (build-spit-frontend)))
+   (sift :include #{#"^public/"
+                    #".*\.jar"})
+   (sift :invert true :include #{#"^out/"})
+   (sift :include #{#"\.out"} :invert true)
+   (target)
+   ))
