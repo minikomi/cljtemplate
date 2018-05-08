@@ -4,15 +4,12 @@
    [hikari-cp.core :as hcp]
    [clojure.java.jdbc :as jdbc]
    [clojure.pprint :as pprint]
-   [to-jdbc-uri.core :refer to-jdbc-uri]
+   [to-jdbc-uri.core :refer [to-jdbc-uri]]
    [mount.core :refer [defstate]]))
 
 (defstate datasource
   :start
-  {:datasource (hcp/make-datasource {:url (to-jdbc-uri
-                                           (or
-                                            (System/getenv "DATABASE_URL")
-                                            (:db-url env)))})}
+  {:datasource (hcp/make-datasource {:jdbc-url (to-jdbc-uri (:database-url env))})}
   :stop
   (hcp/close-datasource (:datasource datasource)))
 

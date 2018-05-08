@@ -98,7 +98,7 @@
                       :dir-static "static"
                       :dir-migrations "resources/migrations"
                       :db-adapter "postgresql"
-                      :db-url "jdbc:postgresql://localhost:5432/shouter"})
+                      :database-url "jdbc:postgresql://localhost:5432/shouter"})
 
 (deftask dev-options []
   (task-options! cljs {:optimizations :none
