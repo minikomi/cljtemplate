@@ -71,8 +71,7 @@
  '[environ.core :refer [env]]
  '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]])
 
-(def prod-environment {:http-port "3000"
-                       :dir-static "static"
+(def prod-environment {:dir-static "static"
                        :dir-migrations "resources/migrations"
                        :db-adapter "postgresql"
                        :std-out true
@@ -95,7 +94,7 @@
   (environ :env prod-environment))
 
 (def dev-environment {:debug "true"
-                      :http-port "3000"
+                      :port "3000"
                       :dir-static "static"
                       :dir-migrations "resources/migrations"
                       :db-adapter "postgresql"

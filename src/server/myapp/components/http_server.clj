@@ -12,6 +12,6 @@
 
 (defstate server
   :start (do
-           (timbre/info "Server started on port " (env :http-port 3000))
-           (ohs/run-server #'wrapped-handler {:port (Integer. (env :http-port "3000"))}))
+           (timbre/info "Server started on port " (env :port 3000))
+           (ohs/run-server #'wrapped-handler {:port (Integer. (env :port "3000"))}))
   :stop (stop-server! server))
