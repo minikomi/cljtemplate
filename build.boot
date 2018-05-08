@@ -31,6 +31,7 @@
                  [hikari-cp "2.2.0"]
                  [com.layerware/hugsql "0.4.8"]
                  [org.postgresql/postgresql "42.2.2"]
+                 [com.carouselapps/to-jdbc-uri "0.5.0"]
                  [org.clojure/java.jdbc "0.7.5"]
                  [ragtime "0.7.2"]
                  [funcool/struct "1.2.0"]
