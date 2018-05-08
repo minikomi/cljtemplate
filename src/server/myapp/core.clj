@@ -4,6 +4,7 @@
             [myapp.components.http-server :as s]
             [myapp.components.hikari-cp]
             [myapp.components.queries :as q]
+            [myapp.components.nrepl :as n]
             [myapp.components.handler :as h]
             [myapp.components.logger]
             [clojure.java.io :as io]
@@ -17,7 +18,8 @@
     (some #{"init"} args)
     (do
       (timbre/info "Initializing DB")
-      (mount/start (mount/except [#'s/server
+      (mount/start (mount/except [#'n/nrepl
+                                  #'s/server
                                   #'h/wrapped-handler]))
       (db/migrate)
       (let [console (. System console)
