@@ -1,6 +1,6 @@
 (set-env!
  :resource-paths #{"resources"}
- :source-paths #{"src/server" "src/frontend"}
+ :source-paths #{"src/server" "src/frontend" "src/tasks"}
  :dependencies '[;; pin depenencies
                  [org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.9.946"]
@@ -41,7 +41,6 @@
                  [poyo.co/boot-create-html "0.1.1-SNAPSHOT" :scope "boot"]
                  [adzerk/boot-reload "0.5.2"                :scope "boot"]
                  [boot-environ "1.1.0"                      :scope "boot"]
-                 [org.martinklepsch/boot-garden "1.3.2-2"   :scope "boot"]
                  [samestep/boot-refresh "0.1.0"             :scope "boot"]
                  [weasel "0.7.0"                            :scope "boot"]
                  [danielsz/boot-autoprefixer "0.1.0"        :scope "boot"]
@@ -56,8 +55,8 @@
 
 (require
  '[adzerk.boot-cljs :refer [cljs]]
- '[org.martinklepsch.boot-garden :refer [garden]]
  '[environ.boot :refer [environ]]
+ '[garden :refer [build-garden]]
  '[myapp.core]
  '[adzerk.boot-reload :refer [reload]]
  '[samestep.boot-refresh :refer [refresh]]
@@ -122,11 +121,11 @@
 
 (deftask build-styles []
   (comp
-   (garden :styles-var 'myapp.styles.core/combined
-           :output-to "public/css/styles.css"
-           :css-prepend []
-           :auto-prefix #{:cursor :transform}
-           :pretty-print (:debug env false))))
+   (build-garden :styles-var 'myapp.styles.core/combined
+                 :output-to "public/css/styles.css"
+                 :css-prepend []
+                 :auto-prefix #{:cursor :transform}
+                 :pretty-print (:debug env false))))
 
 (deftask build-frontend []
   (comp
