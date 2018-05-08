@@ -7,7 +7,7 @@
             [taoensso.timbre :as timbre]))
 
 (defn- load-config []
-  {:datastore (r-jdbc/sql-database (env :db-url))
+  {:datastore (r-jdbc/sql-database (env :database-url))
    :migrations (r-jdbc/load-resources "migrations")})
 
 (defn generate [generate-name]

@@ -74,7 +74,7 @@
 (def prod-environment {:dir-static "static"
                        :dir-migrations "resources/migrations"
                        :db-adapter "postgresql"
-                       :std-out true
+                       :std-out "true"
                        })
 
 (deftask prod-options []
