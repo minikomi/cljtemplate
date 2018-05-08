@@ -74,8 +74,8 @@
 (def prod-environment {:http-port "3000"
                        :dir-static "static"
                        :dir-migrations "resources/migrations"
-                       :db-adapter "postgres"
-                       :db-url "jdbc:postgres://localhost/myapp"})
+                       :db-adapter "postgresql"
+                       })
 
 (deftask prod-options []
   (task-options!
@@ -233,11 +233,9 @@
    (target :dir #{"target"}
            :no-clean true)))
 
-(deftask build-lein []
+(deftask build []
   (comp
    (prod-options)
    (build-lein-jar)
    ;; frontend
-   (build-spit-frontend)
-   ;; images
-))
+   (build-spit-frontend)))

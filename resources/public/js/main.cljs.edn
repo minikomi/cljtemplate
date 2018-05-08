@@ -1,0 +1,7 @@
+{:require [myapp.core]
+ :init-fns [myapp.core/init]
+ :boot-reload {:on-jsload myapp.core/init}
+ :compiler-options {:asset-path "/js/main.out"
+                    :foreign-libs []
+                    :externs []
+                    }}

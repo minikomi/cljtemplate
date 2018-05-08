@@ -8,8 +8,10 @@
 
 (defstate datasource
   :start
-  {:datasource (hcp/make-datasource {:adapter (:db-adapter env)
-                                     :url (:db-url env)})}
+  {:datasource (hcp/make-datasource {:adapter "postgresql"
+                                     :url (or
+                                           (System/getenv "DATABASE_URL")
+                                           (:db-url env))})}
   :stop
   (hcp/close-datasource (:datasource datasource)))
 
