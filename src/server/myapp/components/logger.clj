@@ -7,11 +7,12 @@
 (defn setup []
   (let [fname (or (:log-file env) "log/myapp.log")
         standard-out (env :std-out false)]
-    (timbre/merge-config! {:appenders
-                           {:spit (appenders/spit-appender
-                                   {:fname fname})}})
-    (timbre/merge-config! {:appenders
-                           {:println {:enabled? standard-out}}})))
+    (if standard-out
+      (timbre/merge-config! {:appenders
+                             {:println {:enabled? standard-out}}})
+      (timbre/merge-config! {:appenders
+                             {:spit (appenders/spit-appender
+                                     {:fname fname})}}))))
 
 (defstate logger
   :start (setup))

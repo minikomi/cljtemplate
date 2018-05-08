@@ -75,6 +75,7 @@
                        :dir-static "static"
                        :dir-migrations "resources/migrations"
                        :db-adapter "postgresql"
+                       :std-out true
                        })
 
 (deftask prod-options []
