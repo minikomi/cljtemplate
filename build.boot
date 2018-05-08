@@ -167,7 +167,9 @@
    (aot)
    (pom)
    (uber)
-   (jar)))
+   (jar)
+   (sift :include #{#".*\.jar"})
+   ))
 
 ;; lein based uber
 
@@ -235,6 +237,6 @@
 (deftask build []
   (comp
    (prod-options)
-   (build-lein-jar)
+   (build-dist)
    ;; frontend
    (build-spit-frontend)))
