@@ -71,11 +71,9 @@
  '[environ.core :refer [env]]
  '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]])
 
-(def prod-environment {:dir-static "static"
-                       :dir-migrations "resources/migrations"
+(def prod-environment {:dir-migrations "resources/migrations"
                        :db-adapter "postgresql"
-                       :std-out "true"
-                       })
+                       :std-out "true"})
 
 (deftask prod-options []
   (task-options!
@@ -95,7 +93,6 @@
 
 (def dev-environment {:debug "true"
                       :port "3000"
-                      :dir-static "static"
                       :dir-migrations "resources/migrations"
                       :db-adapter "postgresql"
                       :database-url "jdbc:postgresql://localhost:5432/shouter"})

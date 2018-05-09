@@ -5,9 +5,8 @@
             [taoensso.timbre.appenders.core :as appenders]))
 
 (defn setup []
-  (let [fname (or (:log-file env) "log/myapp.log")
-        standard-out (env :std-out false)]
-    (if standard-out
+  (let [fname (or (:log-file env) "log/myapp.log")]
+    (if-not fname
       (timbre/merge-config! {:appenders
                              {:println {:enabled? standard-out}}})
       (timbre/merge-config! {:appenders
