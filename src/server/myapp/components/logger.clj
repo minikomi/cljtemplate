@@ -9,7 +9,7 @@
         standard-out (:std-out env)]
     (if-not fname
       (timbre/merge-config! {:appenders
-                             {:println {:enabled? (nil? fname)}}})
+                             {:println {:enabled? standard-out}}})
       (timbre/merge-config! {:appenders
                              {:spit (appenders/spit-appender
                                      {:fname fname})}}))))
