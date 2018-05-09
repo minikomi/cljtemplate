@@ -117,6 +117,7 @@
               joda-time-writer}})
 
 (defn wrap-handler []
+  (println (.getPath (io/file (System/getProperty "user.dir") (:dir-static env))))
   (let [mode-middleware (create-mode-middleware (:debug env))
         mode-defaults (create-mode-defaults (:debug env))]
     (-> (br/make-handler r/route-map dispatch-route)
@@ -124,7 +125,7 @@
         (wrap-defaults mode-defaults)
         (wrap-resource "public")
         (mode-middleware)
-        (wrap-file (:dir-static env))
+        (wrap-file (io/file (System/getProperty "user.dir") (:dir-static env)))
         (wrap-remove-slash)
         (wrap-restful-format {:response-options
                               {:transit-json transit-opts
