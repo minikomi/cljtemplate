@@ -124,7 +124,7 @@
         (wrap-defaults mode-defaults)
         (wrap-resource "public")
         (mode-middleware)
-        (wrap-file (io/file (System/getProperty "user.dir") "static"))
+        (wrap-file (io/file (env :user-dir) "static"))
         (wrap-remove-slash)
         (wrap-restful-format {:response-options
                               {:transit-json transit-opts
