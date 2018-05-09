@@ -5,10 +5,11 @@
             [taoensso.timbre.appenders.core :as appenders]))
 
 (defn setup []
-  (let [fname (or (:log-file env) "log/myapp.log")]
+  (let [fname (or (:log-file env) "log/myapp.log")
+        standard-out (:std-out env)]
     (if-not fname
       (timbre/merge-config! {:appenders
-                             {:println {:enabled? standard-out}}})
+                             {:println {:enabled? (nil? fname)}}})
       (timbre/merge-config! {:appenders
                              {:spit (appenders/spit-appender
                                      {:fname fname})}}))))
