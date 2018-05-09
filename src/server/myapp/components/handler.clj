@@ -94,9 +94,7 @@
   (if debug
     (fn [req]
       (-> req
-          wrap-remove-slash
-          (prone/wrap-exceptions {:app-namespaces ['myapp]})
-          (wrap-file (:dir-static env))))
+          (prone/wrap-exceptions {:app-namespaces ['myapp]})))
     identity))
 
 (defn dispatch-route [kw]
@@ -126,6 +124,8 @@
         (wrap-defaults mode-defaults)
         (wrap-resource "public")
         (mode-middleware)
+        (wrap-file (:dir-static env))
+        (wrap-remove-slash)
         (wrap-restful-format {:response-options
                               {:transit-json transit-opts
                                :transit-messagepack transit-opts}})
