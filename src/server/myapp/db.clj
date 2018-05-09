@@ -1,5 +1,6 @@
 (ns myapp.db
   (:require [myapp.components.queries :as q]
+            [myapp.components.hikari-cp :as hcp]
             [buddy.hashers :as hashers]
             [environ.core :refer [env]]
             [ragtime.jdbc :as r-jdbc]
@@ -7,7 +8,7 @@
             [taoensso.timbre :as timbre]))
 
 (defn- load-config []
-  {:datastore (r-jdbc/sql-database (env :database-url))
+  {:datastore (r-jdbc/sql-database hcp/datasource)
    :migrations (r-jdbc/load-resources "migrations")})
 
 (defn generate [generate-name]
